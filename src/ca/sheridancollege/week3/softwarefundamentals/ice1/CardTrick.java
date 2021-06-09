@@ -29,7 +29,12 @@ public class CardTrick {
             c.setSuit(Card.SUITS[s]);                             //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
             magicHand[i]=c;
         }
-        System.out.println("magicHand array has been created.Please choose your card now. ");
+        System.out.println("magicHand array has been created.");
+        for(int i=0;i<magicHand.length;i++)
+        {
+         System.out.println(magicHand[i].getSuit() + " " +magicHand[i].getValue());
+        }
+        System.out.println("Please choose your card now.");
         
         //insert code to ask the user for Card value and suit, create their card
         Scanner in = new Scanner(System.in);
@@ -44,21 +49,16 @@ public class CardTrick {
         
         
         // and search magicHand here
-        int match=0;
-        for(int j =0;j<magicHand.length;j++)
+        boolean match=false;
+        for(int i = 0;i < magicHand.length; i++)
         {
-            if( magicHand[j].getValue()== user_card.getValue() && magicHand[j].getSuit().equals(user_card.getSuit()))
-            {
-               match=1;   
-            }
-            else
-            {
-                match=0;
-            }
+            match = (magicHand[i].getSuit().equals(user_card.getSuit())) && (magicHand[i].getValue() == user_card.getValue());
+           if(match == true)
+               break;
         }
         
         //Then report the result here
-        if(match==1){
+        if(match){
             System.out.println("Your choosen card is in the magicHand array. Congratulations!");
         }
         else
